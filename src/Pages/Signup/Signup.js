@@ -3,9 +3,32 @@ import { Link } from "react-router-dom";
 import { FaUserAlt } from "react-icons/fa";
 import { BsFillEnvelopeFill } from "react-icons/bs";
 import { AiFillLock } from "react-icons/ai";
-import { FcGoogle } from "react-icons/fc";
+import { useForm } from "react-hook-form";
+import { useContext } from "react";
+import { AuthContext } from "../../contexts/AuthProvider";
+import { toast } from "react-hot-toast";
 
 const Signup = () => {
+  const { createUser } = useContext(AuthContext);
+  const { register, handleSubmit, reset } = useForm();
+
+  const handleSignUp = (data) => {
+    console.log(data);
+    const email = data.email;
+    const password = data.password;
+    console.log(email, password);
+    createUser(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        toast.success("User Successfully Register.");
+        reset();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-10">
       <div
@@ -37,7 +60,7 @@ const Signup = () => {
           <h2 className="font-bold text-5xl my-5">
             Create <br /> Your Account
           </h2>
-          <form>
+          <form onSubmit={handleSubmit(handleSignUp)}>
             <div class="relative my-3">
               <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                 <FaUserAlt />
@@ -45,6 +68,7 @@ const Signup = () => {
               <input
                 type="text"
                 id=""
+                {...register("name")}
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="Your Name"
               />
@@ -56,6 +80,7 @@ const Signup = () => {
               <input
                 type="email"
                 id=""
+                {...register("email", { required: true })}
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="Your Email"
               />
@@ -67,6 +92,7 @@ const Signup = () => {
               <input
                 type="password"
                 id=""
+                {...register("password", { required: true })}
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="Password"
               />
@@ -78,6 +104,7 @@ const Signup = () => {
               <input
                 type="password"
                 id=""
+                {...register("confirmPassword")}
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="Confirm Password"
               />

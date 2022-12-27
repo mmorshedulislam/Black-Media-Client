@@ -1,11 +1,44 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FaUserAlt } from "react-icons/fa";
 import { BsFillEnvelopeFill } from "react-icons/bs";
 import { AiFillLock } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
+import { useContext } from "react";
+import { AuthContext } from "../../contexts/AuthProvider";
+import { useForm } from "react-hook-form";
+import { toast } from "react-hot-toast";
 
 const Login = () => {
+  const { signInUser, googleSignIn } = useContext(AuthContext);
+
+  const { register, handleSubmit, reset } = useForm();
+
+  const handleSignInUser = (data) => {
+    const email = data.email;
+    const password = data.password;
+    console.log(data);
+    return signInUser(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        reset();
+        toast.success("Login Successfully.");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const handleGoogleSignIn = () => {
+    googleSignIn()
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-10">
       <div
@@ -37,7 +70,7 @@ const Login = () => {
           <h2 className="font-bold text-5xl my-5">
             Login into <br /> Your Account
           </h2>
-          <form>
+          <form onSubmit={handleSubmit(handleSignInUser)}>
             <div class="relative my-3">
               <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                 <BsFillEnvelopeFill />
@@ -47,6 +80,7 @@ const Login = () => {
                 id=""
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="Your Email"
+                {...register("email", { required: true })}
               />
             </div>
             <div class="relative my-3">
@@ -58,6 +92,7 @@ const Login = () => {
                 id=""
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="Password"
+                {...register("password", { required: true })}
               />
             </div>
             <div className="flex justify-between my-3">
@@ -90,6 +125,7 @@ const Login = () => {
           <button
             type="button"
             class="text-white bg-blue-400 hover:bg-[#4285F4]/90 focus:ring-4 focus:outline-none focus:ring-[#4285F4]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#4285F4]/55 mr-2 mb-2"
+            onClick={handleGoogleSignIn}
           >
             <FcGoogle className="text-2xl mr-5" />
             <span>Sign in with Google</span>
