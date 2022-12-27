@@ -7,6 +7,7 @@ import {
   onAuthStateChanged,
   signInWithEmailAndPassword,
   signInWithPopup,
+  updateProfile,
 } from "firebase/auth";
 import { app } from "../firebase/firebase.config";
 import { useEffect } from "react";
@@ -22,6 +23,12 @@ const AuthProvider = ({ children }) => {
 
   const createUser = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
+  };
+
+  const upgradeProfile = (name) => {
+    return updateProfile(user, {
+      displayName: name,
+    });
   };
 
   const signInUser = (email, password) => {
@@ -41,7 +48,13 @@ const AuthProvider = ({ children }) => {
     };
   }, []);
 
-  const authInfo = { user, createUser, signInUser, googleSignIn };
+  const authInfo = {
+    user,
+    createUser,
+    upgradeProfile,
+    signInUser,
+    googleSignIn,
+  };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
   );

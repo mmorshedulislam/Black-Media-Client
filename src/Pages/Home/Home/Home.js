@@ -1,12 +1,9 @@
-import React from "react";
-import Root from "../../../Root/Root";
+import React, { useContext } from "react";
+import { AuthContext } from "../../../contexts/AuthProvider";
 
 const Home = () => {
-  return (
-    <div>
-      <Root></Root>
-    </div>
-  );
+  const { user } = useContext(AuthContext);
+  return <div>{user.displayName && user?.displayName}</div>;
 };
 
 export default Home;
