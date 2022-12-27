@@ -1,12 +1,12 @@
 import "./App.css";
 import "flowbite";
-import Slider from "./components/Slider";
+import { RouterProvider } from "react-router-dom";
+import router from "./routes/routes";
 
 function App() {
   return (
     <div className="App">
-      <h1>Hello From React!</h1>
-      <Slider></Slider>
+      <RouterProvider router={router}></RouterProvider>
     </div>
   );
 }
