@@ -1,17 +1,17 @@
 import React from "react";
-import { useContext } from "react";
+import { FiShare2 } from "react-icons/fi";
 import { BiLike } from "react-icons/bi";
 import { BsFillHeartFill, BsThreeDots } from "react-icons/bs";
-import { AuthContext } from "../../../contexts/AuthProvider";
 import { FaComment } from "react-icons/fa";
-import { FiShare2 } from "react-icons/fi";
-import { Link } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
+import Comments from "./Comments";
 
-const Post = ({ post }) => {
-  const { _id, postText, postImgUrl, authorName, authorImage, postDate } = post;
-  const { user } = useContext(AuthContext);
+const PostDetails = () => {
+  const post = useLoaderData();
+  console.log(post);
+  const { postText, postImgUrl, authorName, authorImage, postDate } = post;
   return (
-    <div className="my-2 bg-white border rounded-lg p-3">
+    <div className="my-2 bg-white border rounded-lg p-3 mb-20">
       <div className="flex justify-between">
         <div className="flex gap-x-2">
           <img
@@ -34,16 +34,8 @@ const Post = ({ post }) => {
       </div>
 
       <div>
+        <p className="text-justify">{postText}</p>
         <img className="w-full rounded-md my-3" src={postImgUrl} alt="" />
-        <p className="text-justify">
-          {postText.slice(0, 150)}...{" "}
-          <Link
-            to={`/postDetails/${_id}`}
-            className="text-blue-400 font-semibold"
-          >
-            Read More
-          </Link>
-        </p>
       </div>
       <div className="flex justify-between items-center my-5">
         <div className="flex gap-x-3">
@@ -57,7 +49,7 @@ const Post = ({ post }) => {
           <button className="text-2xl">
             <FaComment className="text-gray-500" />
           </button>
-          <Link to={`/postDetails/${_id}`}>22 Comments</Link>
+          <span>22 Comments</span>
         </div>
         <div>
           <button className="flex justify-center items-center gap-x-2">
@@ -66,8 +58,9 @@ const Post = ({ post }) => {
           </button>
         </div>
       </div>
+      <Comments post={post}></Comments>
     </div>
   );
 };
 
-export default Post;
+export default PostDetails;

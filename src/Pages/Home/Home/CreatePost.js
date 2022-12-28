@@ -6,6 +6,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../../contexts/AuthProvider";
 import { useForm } from "react-hook-form";
 import { format } from "date-fns";
+import { toast } from "react-hot-toast";
 
 const CreatePost = () => {
   const { user } = useContext(AuthContext);
@@ -14,6 +15,7 @@ const CreatePost = () => {
   const handleCreatePost = (data) => {
     const postText = data.postText;
     const authorName = user?.displayName;
+    const authorEmail = user?.email;
     const authorImage = user?.photoURL;
     const date = new Date();
     const postDate = format(date, "PPPP");
@@ -38,6 +40,7 @@ const CreatePost = () => {
             postText,
             postImgUrl,
             authorName,
+            authorEmail,
             authorImage,
             postDate,
             postMS,
@@ -52,6 +55,8 @@ const CreatePost = () => {
             .then((res) => res.json())
             .then((data) => {
               console.log(data);
+              toast.success("Post Uploaded.");
+              reset();
             })
             .catch((err) => {
               console.log(err);
@@ -87,10 +92,10 @@ const CreatePost = () => {
         ></textarea>
       </div>
       <div className="flex justify-between items-center">
-        <div className="flex gap-x-5 my-3 ml-14">
+        <div className="flex gap-x-3 lg:gap-x-5 my-3 lg:ml-14">
           <div className="flex gap-x-1 items-center justify-center cursor-pointer">
             <FiVideo className="text-2xl" />
-            <span>Live Video</span>
+            <span className="text-sm">Live Video</span>
           </div>
           <div>
             <label
@@ -98,7 +103,7 @@ const CreatePost = () => {
               className="flex gap-x-1 items-center justify-center cursor-pointer"
             >
               <HiPhoto className="text-2xl" />
-              <span>Photos</span>
+              <span className="text-sm">Photos</span>
             </label>
             <input
               type="file"
@@ -110,7 +115,7 @@ const CreatePost = () => {
           </div>
           <div className="flex gap-x-1 items-center justify-center cursor-pointer">
             <BsEmojiSmile className="text-2xl" />
-            <span>Feeling/Activity</span>
+            <span className="text-sm">Feeling/Activity</span>
           </div>
         </div>
         <div className="flex items-center justify-center bg-gray-200 rounded-full w-8 h-8">

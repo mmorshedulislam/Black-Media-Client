@@ -18,6 +18,7 @@ export const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   const auth = getAuth(app);
   const googleProvider = new GoogleAuthProvider();
@@ -29,7 +30,7 @@ const AuthProvider = ({ children }) => {
   const upgradeProfile = (name, photoURL) => {
     return updateProfile(auth.currentUser, {
       displayName: name,
-      photoURL: photoURL
+      photoURL: photoURL,
     });
   };
 
@@ -48,6 +49,7 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
+      setLoading(false);
     });
     return () => {
       unSubscribe();
@@ -56,6 +58,7 @@ const AuthProvider = ({ children }) => {
 
   const authInfo = {
     user,
+    loading,
     createUser,
     upgradeProfile,
     signInUser,

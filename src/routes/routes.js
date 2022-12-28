@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Root from "../layouts/Root";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import Home from "../Pages/Home/Home/Home";
+import PostDetails from "../Pages/Home/Home/PostDetails";
 import Login from "../Pages/Login/Login";
 import Media from "../Pages/Media/Media";
 import Messages from "../Pages/Messages/Messages";
@@ -29,6 +30,12 @@ const router = createBrowserRouter([
       {
         path: "/messages",
         element: <Messages></Messages>,
+      },
+      {
+        path: "/postdetails/:id",
+        loader: ({ params }) =>
+          fetch(`${process.env.REACT_APP_PORT}/post/${params.id}`),
+        element: <PostDetails></PostDetails>,
       },
     ],
   },
