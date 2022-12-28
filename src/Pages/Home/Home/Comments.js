@@ -1,17 +1,15 @@
 import { format } from "date-fns";
 import React from "react";
 import { useState } from "react";
-import { useEffect } from "react";
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import { AuthContext } from "../../../contexts/AuthProvider";
 import Comment from "./Comment";
 
-const Comments = ({ post }) => {
+const Comments = ({ post, comments }) => {
   const { user } = useContext(AuthContext);
   const [processing, setProcessing] = useState(false);
-  const [comments, setComments] = useState([]);
   const { register, handleSubmit, reset } = useForm();
   const handleComment = (data) => {
     const commentText = data.comment;
@@ -46,16 +44,6 @@ const Comments = ({ post }) => {
         setProcessing(false);
       });
   };
-
-  useEffect(() => {
-    // /${post?._id}
-    fetch(`${process.env.REACT_APP_PORT}/comment/${post?._id}`)
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        setComments(data);
-      });
-  }, [post?._id]);
 
   return (
     <section class="bg-white dark:bg-gray-900 py-5 lg:py-6">
