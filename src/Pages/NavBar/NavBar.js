@@ -4,9 +4,15 @@ import { BiSearchAlt } from "react-icons/bi";
 import { TfiUser } from "react-icons/tfi";
 import { FaHome } from "react-icons/fa";
 import { BsMessenger } from "react-icons/bs";
+import { AiOutlineLogin } from "react-icons/ai";
+import { ImUserPlus } from "react-icons/im";
+import { SlLogin } from "react-icons/sl";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../../contexts/AuthProvider";
 
 const NavBar = () => {
+  const { user, logOut } = useContext(AuthContext);
   return (
     <nav className="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-900">
       <div className="container flex flex-wrap items-center justify-between mx-auto">
@@ -97,6 +103,28 @@ const NavBar = () => {
                 <MdOutlinePermMedia />
               </Link>
             </li>
+            {!user ? (
+              <>
+                <li>
+                  <Link to={"/login"} className="text-2xl">
+                    <AiOutlineLogin />
+                  </Link>
+                </li>
+                <li>
+                  <Link to={"/signup"} className="text-2xl">
+                    <ImUserPlus />
+                  </Link>
+                </li>
+              </>
+            ) : (
+              <>
+                <li>
+                  <button onClick={logOut} className="text-2xl">
+                    <SlLogin />
+                  </button>
+                </li>
+              </>
+            )}
 
             {/* <!-- drawer init and toggle start --> */}
             {/* <div className="text-center">

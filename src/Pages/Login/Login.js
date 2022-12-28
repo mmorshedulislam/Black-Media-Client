@@ -7,6 +7,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthProvider";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
+import { FaHome } from "react-icons/fa";
 
 const Login = () => {
   const { signInUser, googleSignIn } = useContext(AuthContext);
@@ -52,19 +53,24 @@ const Login = () => {
         }}
       ></div>
       <div className="p-10">
-        <div className="flex gap-x-2 justify-end">
-          <Link
-            to={"/login"}
-            className="px-6 py-3 rounded-3xl font-semibold bg-[#343A40] text-white"
-          >
-            Login
+        <div className="flex justify-between items-center">
+          <Link to={"/"} className="text-2xl">
+            <FaHome />
           </Link>
-          <Link
-            to={"/signup"}
-            className="px-6 py-3 rounded-3xl font-semibold bg-[#343A40] text-white"
-          >
-            Register
-          </Link>
+          <div className="flex gap-x-2 justify-end">
+            <Link
+              to={"/login"}
+              className="px-6 py-3 rounded-3xl font-semibold bg-[#343A40] text-white"
+            >
+              Login
+            </Link>
+            <Link
+              to={"/signup"}
+              className="px-6 py-3 rounded-3xl font-semibold bg-[#343A40] text-white"
+            >
+              Register
+            </Link>
+          </div>
         </div>
         <div className="lg:w-2/3 mx-auto">
           <h2 className="font-bold text-5xl my-5">

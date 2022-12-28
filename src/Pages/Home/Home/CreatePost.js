@@ -27,7 +27,7 @@ const CreatePost = () => {
         ></textarea>
       </div>
       <div className="flex justify-between items-center">
-        <div className="flex gap-x-3 my-3 ml-14">
+        <div className="flex gap-x-5 my-3 ml-14">
           <div className="flex gap-x-1 items-center justify-center cursor-pointer">
             <FiVideo className="text-2xl" />
             <span>Live Video</span>
