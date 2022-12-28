@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../../../contexts/AuthProvider";
 import Drawer from "../../Drawer/Drawer";
+import CreatePost from "./CreatePost";
 import Post from "./Post";
 
 const Home = () => {
@@ -15,6 +16,7 @@ const Home = () => {
 
       {/* Post Section */}
       <div className="p-5">
+        <CreatePost></CreatePost>
         <Post></Post>
       </div>
 
