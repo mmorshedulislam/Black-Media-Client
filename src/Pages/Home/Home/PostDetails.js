@@ -53,7 +53,7 @@ const PostDetails = () => {
       </div>
 
       <div>
-        <p className="text-justify">{postText}</p>
+        <p className="text-justify my-5">{postText}</p>
         <img className="w-full rounded-md my-3" src={postImgUrl} alt="" />
       </div>
       <div className="flex justify-between items-center my-5">

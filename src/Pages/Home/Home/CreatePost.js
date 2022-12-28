@@ -7,10 +7,12 @@ import { AuthContext } from "../../../contexts/AuthProvider";
 import { useForm } from "react-hook-form";
 import { format } from "date-fns";
 import { toast } from "react-hot-toast";
+import { useState } from "react";
 
 const CreatePost = () => {
   const { user } = useContext(AuthContext);
   const { register, handleSubmit, reset } = useForm();
+  const [processing, setProcessing] = useState(false);
 
   const handleCreatePost = (data) => {
     const postText = data.postText;
@@ -27,6 +29,7 @@ const CreatePost = () => {
 
     const url = `https://api.imgbb.com/1/upload?key=b244a88f9f8d1ed1e003856b185c6459`;
 
+    setProcessing(true);
     fetch(url, {
       method: "POST",
       body: formData,
@@ -59,14 +62,17 @@ const CreatePost = () => {
               console.log(data);
               toast.success("Post Uploaded.");
               reset();
+              setProcessing(false);
             })
             .catch((err) => {
               console.log(err);
+              setProcessing(false);
             });
         }
       })
       .catch((err) => {
         console.log(err);
+        setProcessing(false);
       });
   };
 
@@ -128,7 +134,10 @@ const CreatePost = () => {
         <input
           type="submit"
           value="POST"
-          className="bg-gray-600 w-full rounded-md text-white p-1 cursor-pointer text-xl"
+          className={`bg-gray-600 w-full rounded-md text-white p-1 cursor-pointer text-xl ${
+            processing && "bg-gray-900"
+          }`}
+          disabled={processing}
         />
       </div>
     </form>
