@@ -8,7 +8,7 @@ import { AuthContext } from "../../../contexts/AuthProvider";
 const CreatePost = () => {
   const { user } = useContext(AuthContext);
   return (
-    <div className="my-2 bg-white border rounded-lg p-3">
+    <form className="my-2 bg-white border rounded-lg p-3">
       <div className="flex gap-x-2">
         <img
           className="w-12 h-12 rounded-full"
@@ -23,7 +23,7 @@ const CreatePost = () => {
           name="post"
           id=""
           placeholder="What's are you Think Now?"
-          className="w-full h-24 rounded-md border"
+          className="w-full h-24 rounded-md border border-gray-300"
         ></textarea>
       </div>
       <div className="flex justify-between items-center">
@@ -32,9 +32,15 @@ const CreatePost = () => {
             <FiVideo className="text-2xl" />
             <span>Live Video</span>
           </div>
-          <div className="flex gap-x-1 items-center justify-center cursor-pointer">
-            <HiPhoto className="text-2xl" />
-            <span>Photos</span>
+          <div>
+            <label
+              htmlFor="post-img"
+              className="flex gap-x-1 items-center justify-center cursor-pointer"
+            >
+              <HiPhoto className="text-2xl" />
+              <span>Photos</span>
+            </label>
+            <input type="file" name="" id="post-img" className="hidden" />
           </div>
           <div className="flex gap-x-1 items-center justify-center cursor-pointer">
             <BsEmojiSmile className="text-2xl" />
@@ -45,7 +51,14 @@ const CreatePost = () => {
           <BsThreeDots className="text-xl cursor-pointer" />
         </div>
       </div>
-    </div>
+      <div className="mt-3">
+        <input
+          type="submit"
+          value="POST"
+          className="bg-gray-600 w-full rounded-md text-white p-1 cursor-pointer text-xl"
+        />
+      </div>
+    </form>
   );
 };
 
