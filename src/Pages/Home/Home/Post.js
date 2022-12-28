@@ -1,13 +1,14 @@
 import React from "react";
 import { useContext } from "react";
 import { BiLike } from "react-icons/bi";
-import { FcLike } from "react-icons/fc";
-import { BsFillHeartFill, BsHeart, BsThreeDots } from "react-icons/bs";
+import { BsFillHeartFill, BsThreeDots } from "react-icons/bs";
 import { AuthContext } from "../../../contexts/AuthProvider";
 import { FaComment } from "react-icons/fa";
 import { FiShare2 } from "react-icons/fi";
 
-const Post = () => {
+const Post = ({ post }) => {
+  const { postText, postImgUrl, authorName, authorImage, postDate, postMS } =
+    post;
   const { user } = useContext(AuthContext);
   return (
     <div className="my-2 bg-white border rounded-lg p-3">
@@ -23,8 +24,8 @@ const Post = () => {
             alt={user?.photoURL}
           />
           <div>
-            <h2 className="p-0 font-semibold">{user?.displayName}</h2>
-            <p className="p-0 text-sm">2 hour ago</p>
+            <h2 className="p-0 font-semibold">{authorName}</h2>
+            <p className="p-0 text-sm">{postDate}</p>
           </div>
         </div>
         <div className="flex items-center justify-center bg-gray-200 rounded-full w-8 h-8">
@@ -33,17 +34,8 @@ const Post = () => {
       </div>
 
       <div>
-        <img
-          className="w-full rounded-md my-3"
-          src="https://cdn.pixabay.com/photo/2016/06/24/10/47/house-1477041__340.jpg"
-          alt=""
-        />
-        <p className="text-justify">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium
-          voluptas alias ipsam assumenda provident earum natus atque quod ipsum,
-          consectetur molestiae aut nam porro qui aliquid nesciunt totam
-          delectus minus.
-        </p>
+        <img className="w-full rounded-md my-3" src={postImgUrl} alt="" />
+        <p className="text-justify">{postText}</p>
       </div>
       <div className="flex justify-between items-center my-5">
         <div className="flex gap-x-3">
