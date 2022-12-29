@@ -49,6 +49,7 @@ const CreatePost = () => {
             postMS,
             likes: 0,
             loves: 0,
+            ratings: 0,
           };
           fetch(`${process.env.REACT_APP_PORT}/posts`, {
             method: "POST",

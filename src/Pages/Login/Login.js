@@ -1,5 +1,5 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { BsFillEnvelopeFill } from "react-icons/bs";
 import { AiFillLock } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
@@ -13,20 +13,27 @@ const Login = () => {
   const { signInUser, googleSignIn } = useContext(AuthContext);
 
   const { register, handleSubmit, reset } = useForm();
+  const [processing, setProcessing] = useState(false);
+
+  const navigate = useNavigate();
 
   const handleSignInUser = (data) => {
     const email = data.email;
     const password = data.password;
     console.log(data);
+    setProcessing(true);
     return signInUser(email, password)
       .then((result) => {
         const user = result.user;
         console.log(user);
         reset();
         toast.success("Login Successfully.");
+        navigate("/");
+        setProcessing(false);
       })
       .catch((err) => {
         console.log(err);
+        setProcessing(false);
       });
   };
 
@@ -38,6 +45,7 @@ const Login = () => {
       })
       .catch((err) => {
         console.log(err);
+        navigate("/");
       });
   };
   return (
@@ -113,11 +121,16 @@ const Login = () => {
               </p>
               <button className="text-sm">Forgot Password?</button>
             </div>
-            <div className="w-full bg-[#343A40] p-3 rounded-md text-white text-center cursor-pointer">
+            <div
+              className={`w-full bg-[#343A40] p-3 rounded-md text-white text-center cursor-pointer ${
+                processing && "bg-gray-800"
+              }`}
+            >
               <input
                 type="submit"
                 value="Login"
                 className="cursor-pointer uppercase"
+                disabled={processing}
               />
             </div>
           </form>

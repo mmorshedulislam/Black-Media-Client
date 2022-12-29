@@ -5,6 +5,7 @@ import { BsFillHeartFill, BsThreeDots } from "react-icons/bs";
 import { AuthContext } from "../../../contexts/AuthProvider";
 import { FaComment } from "react-icons/fa";
 import { FiShare2 } from "react-icons/fi";
+import { RiStarSFill } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
@@ -18,6 +19,7 @@ const Post = ({ post }) => {
     postDate,
     likes,
     loves,
+    ratings,
   } = post;
   const { user } = useContext(AuthContext);
   // const [likes, setLikes] = useState(0);
@@ -39,7 +41,7 @@ const Post = ({ post }) => {
       newLike,
     };
     fetch(`${process.env.REACT_APP_PORT}/newlike`, {
-      method: "POST",
+      method: "PUT",
       headers: {
         "content-type": "application/json",
       },
@@ -61,7 +63,7 @@ const Post = ({ post }) => {
       newLove,
     };
     fetch(`${process.env.REACT_APP_PORT}/newlove`, {
-      method: "POST",
+      method: "PUT",
       headers: {
         "content-type": "application/json",
       },
@@ -126,7 +128,10 @@ const Post = ({ post }) => {
           </button>
           <Link to={`/postDetails/${_id}`}>{comments?.length} Comments</Link>
         </div>
-        <div>
+        <div className="flex justify-center items-center gap-x-2">
+          <span className="flex items-center ">
+            <RiStarSFill className="text-2xl text-yellow-400" /> <span>({ratings})</span>
+          </span>
           <button className="flex justify-center items-center gap-x-2">
             <FiShare2 className="text-2xl" />
             <span>Share</span>

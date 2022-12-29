@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaHome, FaUserAlt } from "react-icons/fa";
 import { BsFillEnvelopeFill } from "react-icons/bs";
 import { AiFillLock } from "react-icons/ai";
@@ -14,6 +14,7 @@ const Signup = () => {
   const { register, handleSubmit, reset } = useForm();
 
   const [processing, setProcessing] = useState(false);
+  const navigate = useNavigate();
 
   const handleSignUp = (data) => {
     const email = data.email;
@@ -42,7 +43,9 @@ const Signup = () => {
           createUser(email, password)
             .then((result) => {
               const user = result.user;
+              // UPDATE PROFILE
               handleUpgradeProfile(name, imgUrl);
+              // SAVE TO DATABASE
               saveToDB(name, email, imgUrl);
               console.log(user);
               reset();
@@ -69,7 +72,9 @@ const Signup = () => {
   };
 
   const saveToDB = (userName, userEmail, userImg) => {
-    const userInfo = { userName, userEmail, userImg };
+    const institute = "Govt. City College, Chittagong.";
+    const address = "Chittagong, Bangladesh.";
+    const userInfo = { userName, userEmail, userImg, institute, address };
     fetch(`${process.env.REACT_APP_PORT}/users`, {
       method: "POST",
       headers: {
@@ -81,6 +86,7 @@ const Signup = () => {
       .then((data) => {
         console.log(data);
         toast.success("User Successfully Register.");
+        navigate("/");
       })
       .catch((err) => {
         console.log("DB Error", err);
