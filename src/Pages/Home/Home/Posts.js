@@ -17,7 +17,7 @@ const Posts = () => {
       });
   }, []);
   return (
-    <div className="rounded-md border p-3">
+    <div className="rounded-md border p-3 my-5">
       <h2 className="text-2xl text-center italic">Popular Posts</h2>
       <div>
         {posts?.slice(0, 3).map((post) => (

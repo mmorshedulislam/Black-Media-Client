@@ -68,7 +68,7 @@ const NavBar = () => {
           </button>
         </div>
         <div
-          className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"
+          className="items-center justify-between w-full md:flex md:w-auto md:order-1"
           id="navbar-search"
         >
           <div className="relative mt-3 md:hidden">
@@ -82,7 +82,7 @@ const NavBar = () => {
               placeholder="Search..."
             />
           </div>
-          <ul className="flex gap-y-3 flex-col p-4 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+          <ul className="flex justify-evenly p-4 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
             <li>
               <Link to={"/"} className="text-2xl">
                 <FaHome />
@@ -125,21 +125,17 @@ const NavBar = () => {
                 </li>
               </>
             )}
-
-            {/* <!-- drawer init and toggle start --> */}
-            {/* <div className="text-center">
-              <button
-                className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-                type="button"
-                data-drawer-target="drawer-backdrop"
-                data-drawer-show="drawer-backdrop"
-                data-drawer-backdrop="true"
-                aria-controls="drawer-backdrop"
+            <label htmlFor="my-drawer-2" className="drawer-button lg:hidden">
+              <svg
+                class="w-6 h-6"
+                data-darkreader-inline-fill=""
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
               >
-                Open
-              </button>
-            </div> */}
-            {/* <!-- drawer init and toggle ends --> */}
+                <path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path>
+              </svg>
+            </label>
           </ul>
         </div>
       </div>

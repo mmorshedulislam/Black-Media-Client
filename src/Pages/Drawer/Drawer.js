@@ -6,7 +6,7 @@ const Drawer = () => {
       {/* <!-- drawer component --> */}
       <div
         id="drawer-backdrop"
-        className="show fixed z-40 h-screen p-4 overflow-y-auto bg-white w-80 dark:bg-gray-800"
+        className="fixed z-40 h-screen p-4 overflow-y-auto bg-white w-80 dark:bg-gray-800 mt-20"
         tabindex="-1"
         aria-labelledby="drawer-backdrop-label"
       >
@@ -41,7 +41,7 @@ const Drawer = () => {
           <ul className="space-y-2">
             <li>
               <a
-                href="#"
+                href="/"
                 className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
               >
                 <svg
@@ -96,7 +96,7 @@ const Drawer = () => {
               <ul id="dropdown-example" className="hidden py-2 space-y-2">
                 <li>
                   <a
-                    href="#"
+                    href="/"
                     className="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                   >
                     Products
@@ -104,7 +104,7 @@ const Drawer = () => {
                 </li>
                 <li>
                   <a
-                    href="#"
+                    href="/"
                     className="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                   >
                     Billing
@@ -112,7 +112,7 @@ const Drawer = () => {
                 </li>
                 <li>
                   <a
-                    href="#"
+                    href="/"
                     className="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                   >
                     Invoice
@@ -122,7 +122,7 @@ const Drawer = () => {
             </li>
             <li>
               <a
-                href="#"
+                href="/"
                 className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
               >
                 <svg
@@ -142,7 +142,7 @@ const Drawer = () => {
             </li>
             <li>
               <a
-                href="#"
+                href="/"
                 className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
               >
                 <svg
@@ -163,7 +163,7 @@ const Drawer = () => {
             </li>
             <li>
               <a
-                href="#"
+                href="/"
                 className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
               >
                 <svg
@@ -184,7 +184,7 @@ const Drawer = () => {
             </li>
             <li>
               <a
-                href="#"
+                href="/"
                 className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
               >
                 <svg
@@ -205,7 +205,7 @@ const Drawer = () => {
             </li>
             <li>
               <a
-                href="#"
+                href="/"
                 className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
               >
                 <svg
@@ -226,7 +226,7 @@ const Drawer = () => {
             </li>
             <li>
               <a
-                href="#"
+                href="/"
                 className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
               >
                 <svg

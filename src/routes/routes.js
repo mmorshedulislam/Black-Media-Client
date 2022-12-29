@@ -8,6 +8,7 @@ import Media from "../Pages/Media/Media";
 import Messages from "../Pages/Messages/Messages";
 import Profile from "../Pages/Profile/Profile";
 import Signup from "../Pages/Signup/Signup";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -21,21 +22,37 @@ const router = createBrowserRouter([
       },
       {
         path: "/profile",
-        element: <Profile></Profile>,
+        element: (
+          <PrivateRoute>
+            <Profile></Profile>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/media",
-        element: <Media></Media>,
+        element: (
+          <PrivateRoute>
+            <Media></Media>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/messages",
-        element: <Messages></Messages>,
+        element: (
+          <PrivateRoute>
+            <Messages></Messages>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/postdetails/:id",
         loader: ({ params }) =>
           fetch(`${process.env.REACT_APP_PORT}/post/${params.id}`),
-        element: <PostDetails></PostDetails>,
+        element: (
+          <PrivateRoute>
+            <PostDetails></PostDetails>
+          </PrivateRoute>
+        ),
       },
     ],
   },

@@ -126,11 +126,14 @@ const Post = ({ post }) => {
           <button className="text-2xl">
             <FaComment className="text-gray-500" />
           </button>
-          <Link to={`/postDetails/${_id}`}>{comments?.length} Comments</Link>
+          <Link to={`/postDetails/${_id}`}>
+            {comments?.length} <span className="hidden md:inline-block">Comments</span>
+          </Link>
         </div>
         <div className="flex justify-center items-center gap-x-2">
           <span className="flex items-center ">
-            <RiStarSFill className="text-2xl text-yellow-400" /> <span>({ratings})</span>
+            <RiStarSFill className="text-2xl text-yellow-400" />{" "}
+            <span>({ratings})</span>
           </span>
           <button className="flex justify-center items-center gap-x-2">
             <FiShare2 className="text-2xl" />

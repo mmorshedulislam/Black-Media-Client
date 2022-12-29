@@ -8,7 +8,8 @@ const Media = () => {
   const { user, loading } = useContext(AuthContext);
   const [posts, setPosts] = useState([]);
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_PORT}/postsbyuser?user=${user?.email}`)
+    // fetch(`${process.env.REACT_APP_PORT}/postsbyuser?user=${user?.email}`)
+    fetch(`${process.env.REACT_APP_PORT}/posts`)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -24,7 +25,7 @@ const Media = () => {
     <div>
       <div>
         <h2 className="text-2xl lg:text-4xl my-5 font-bold">
-          My Media: {posts.length}
+          Media: {posts.length}
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
           {posts.map((post) => (

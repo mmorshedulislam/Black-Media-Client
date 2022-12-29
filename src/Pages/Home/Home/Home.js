@@ -5,7 +5,7 @@ import TopRatingPosts from "./TopRatingPosts";
 
 const Home = () => {
   return (
-    <div className="p-5 mb-20">
+    <div className="p-5 lg:mb-20">
       <CreatePost></CreatePost>
       <Posts></Posts>
       <TopRatingPosts></TopRatingPosts>

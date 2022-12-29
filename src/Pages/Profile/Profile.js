@@ -24,7 +24,7 @@ const Profile = () => {
   console.log(userInfo);
 
   return (
-    <div>
+    <div className="mb-20">
       <div
         className="h-48 relative"
         style={{
@@ -35,21 +35,22 @@ const Profile = () => {
           backgroundSize: "cover",
         }}
       ></div>
-      <div className="bg-white border rounded-sm p-5">
+      <div className="bg-white rounded-sm p-5">
         <div className="flex justify-between items-start">
-          <div className="w-full flex items-center gap-x-3">
+          <div className="w-full flex flex-col justify-center items-center gap-x-3">
             <img
               className="w-28 h-28 rounded-full"
               src={user?.photoURL}
               alt=""
             />
             <div>
-              <h2 className="font-semibold text-xl">{userInfo?.userName}</h2>
-              <p className="text-sm">{userInfo?.userEmail}</p>
+              <h2 className="font-semibold text-2xl">{userInfo?.userName}</h2>
+              <p className="text-md text-center">{userInfo?.userEmail}</p>
             </div>
           </div>
           {/* <!-- Modal toggle --> */}
           <button
+            type="button"
             data-modal-toggle="profile-update-modal"
             className="flex justify-center items-center gap-x-1 p-1 bg-gray-300 border rounded-md"
           >
@@ -57,13 +58,13 @@ const Profile = () => {
           </button>
         </div>
 
-        <div className="flex gap-x-5 ml-16 my-2 items-center">
+        <div className="flex gap-x-3 ml-16 my-2 items-center">
           <HiAcademicCap className="text-2xl" />
-          <h2 className="text-xl font-semibold">{userInfo?.institute}</h2>
+          <h2 className=" font-semibold">{userInfo?.institute}</h2>
         </div>
-        <div className="flex gap-x-5 ml-16 my-2 items-center">
+        <div className="flex gap-x-3 ml-16 my-2 items-center">
           <MdLocationPin className="text-2xl" />
-          <h2 className="text-xl font-semibold">{userInfo?.address}</h2>
+          <h2 className="font-semibold">{userInfo?.address}</h2>
         </div>
       </div>
       <ProfileModal></ProfileModal>

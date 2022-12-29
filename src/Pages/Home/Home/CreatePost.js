@@ -96,15 +96,15 @@ const CreatePost = () => {
           name="post"
           id=""
           placeholder="What's are you Think Now?"
-          className="w-full h-28 rounded-md border-gray-300 focus:border-none"
+          className="w-full h-28 rounded-md border-gray-300"
           {...register("postText", { required: true })}
         ></textarea>
       </div>
       <div className="flex justify-between items-center">
-        <div className="flex gap-x-3 lg:gap-x-5 my-3 lg:ml-14">
+        <div className="flex gap-x-5 lg:gap-x-5 my-3 ml-14">
           <div className="flex gap-x-1 items-center justify-center cursor-pointer">
             <FiVideo className="text-2xl" />
-            <span className="text-sm">Live Video</span>
+            <span className="text-sm hidden md:block">Live Video</span>
           </div>
           <div>
             <label
@@ -112,7 +112,7 @@ const CreatePost = () => {
               className="flex gap-x-1 items-center justify-center cursor-pointer"
             >
               <HiPhoto className="text-2xl" />
-              <span className="text-sm">Photos</span>
+              <span className="hidden md:block text-sm">Photos</span>
             </label>
             <input
               type="file"
@@ -124,7 +124,7 @@ const CreatePost = () => {
           </div>
           <div className="flex gap-x-1 items-center justify-center cursor-pointer">
             <BsEmojiSmile className="text-2xl" />
-            <span className="text-sm">Feeling/Activity</span>
+            <span className="text-sm hidden md:block">Feeling/Activity</span>
           </div>
         </div>
         <div className="flex items-center justify-center bg-gray-200 rounded-full w-8 h-8">
@@ -135,7 +135,7 @@ const CreatePost = () => {
         <input
           type="submit"
           value="POST"
-          className={`bg-gray-600 w-full rounded-md text-white p-1 cursor-pointer text-xl ${
+          className={`bg-gray-600 w-full rounded-md text-white p-1 cursor-pointer text-md ${
             processing && "bg-gray-900"
           }`}
           disabled={processing}
