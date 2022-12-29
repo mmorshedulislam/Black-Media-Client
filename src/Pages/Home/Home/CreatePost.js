@@ -95,7 +95,7 @@ const CreatePost = () => {
           name="post"
           id=""
           placeholder="What's are you Think Now?"
-          className="w-full h-24 rounded-md border border-gray-300"
+          className="w-full h-28 rounded-md border-gray-300 focus:border-none"
           {...register("postText", { required: true })}
         ></textarea>
       </div>

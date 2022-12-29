@@ -7,7 +7,7 @@ const SingleMedia = ({ post }) => {
   const { postText, postImgUrl, authorName, authorImage, postDate } =
     post;
   return (
-    <div className="border border-gray-300 rounded-md p-2 mx-5">
+    <div className="border border-gray-300 rounded-md p-2 mx-5 lg:mx-0">
       <div className="flex justify-between">
         <div className="flex gap-x-2">
           <img
