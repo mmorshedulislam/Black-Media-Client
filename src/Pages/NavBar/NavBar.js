@@ -127,7 +127,7 @@ const NavBar = () => {
             )}
             <label htmlFor="my-drawer-2" className="drawer-button lg:hidden">
               <svg
-                class="w-6 h-6"
+                className="w-6 h-6"
                 data-darkreader-inline-fill=""
                 fill="currentColor"
                 viewBox="0 0 20 20"

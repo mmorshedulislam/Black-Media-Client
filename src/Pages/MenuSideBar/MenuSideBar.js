@@ -29,7 +29,7 @@ const MenuSideBar = () => {
                     className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                   >
                     <svg
-                      class="w-6 h-6"
+                      className="w-6 h-6"
                       data-darkreader-inline-fill=""
                       fill="currentColor"
                       viewBox="0 0 20 20"
@@ -47,7 +47,7 @@ const MenuSideBar = () => {
                     className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                   >
                     <svg
-                      class="w-6 h-6"
+                      className="w-6 h-6"
                       data-darkreader-inline-fill=""
                       fill="currentColor"
                       viewBox="0 0 20 20"
@@ -73,7 +73,7 @@ const MenuSideBar = () => {
                     className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                   >
                     <svg
-                      class="w-6 h-6"
+                      className="w-6 h-6"
                       data-darkreader-inline-fill=""
                       fill="currentColor"
                       viewBox="0 0 20 20"
@@ -99,7 +99,7 @@ const MenuSideBar = () => {
                     className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                   >
                     <svg
-                      class="w-6 h-6"
+                      className="w-6 h-6"
                       data-darkreader-inline-fill=""
                       fill="currentColor"
                       viewBox="0 0 20 20"

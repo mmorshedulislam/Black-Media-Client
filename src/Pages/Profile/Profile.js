@@ -7,21 +7,28 @@ import { BiPencil } from "react-icons/bi";
 import ProfileModal from "./ProfileModal";
 import { useState } from "react";
 import { useEffect } from "react";
+import Spinner from "../../Shared/Spinner";
 
 const Profile = () => {
   const { user } = useContext(AuthContext);
   const [userInfo, setUserInfo] = useState({});
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    setLoading(true);
+
     fetch(`${process.env.REACT_APP_PORT}/user/${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
         setUserInfo(data);
+        setLoading(false);
       });
   }, [user?.email]);
 
-  console.log(userInfo);
+  if (loading) {
+    return <Spinner></Spinner>;
+  }
 
   return (
     <div className="mb-20">

@@ -8,13 +8,19 @@ import { useForm } from "react-hook-form";
 import { format } from "date-fns";
 import { toast } from "react-hot-toast";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const CreatePost = () => {
   const { user } = useContext(AuthContext);
   const { register, handleSubmit, reset } = useForm();
   const [processing, setProcessing] = useState(false);
+  const navigate = useNavigate();
 
   const handleCreatePost = (data) => {
+    if (!user) {
+      toast.error("Please Login then Post.");
+      return navigate("/login");
+    }
     const postText = data.postText;
     const authorName = user?.displayName;
     const authorEmail = user?.email;
@@ -64,6 +70,7 @@ const CreatePost = () => {
               toast.success("Post Uploaded.");
               reset();
               setProcessing(false);
+              navigate("/media");
             })
             .catch((err) => {
               console.log(err);

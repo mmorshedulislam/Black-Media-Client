@@ -21,6 +21,7 @@ const Login = () => {
     const email = data.email;
     const password = data.password;
     console.log(data);
+
     setProcessing(true);
     return signInUser(email, password)
       .then((result) => {
@@ -34,6 +35,7 @@ const Login = () => {
       .catch((err) => {
         console.log(err);
         setProcessing(false);
+        toast.error(err.code);
       });
   };
 
@@ -53,7 +55,7 @@ const Login = () => {
       <div
         className="hidden lg:block"
         style={{
-          background: `url('http://uitheme.net/sociala/images/login-bg-2.jpg')`,
+          background: `url('https://i.ibb.co/HdP57tH/bg.jpg')`,
           backgroundPosition: "center",
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
@@ -81,7 +83,7 @@ const Login = () => {
           </div>
         </div>
         <div className="lg:w-2/3 mx-auto">
-          <h2 className="font-bold text-5xl my-5">
+          <h2 className="font-bold text-3xl lg:text-5xl my-5">
             Login into <br /> Your Account
           </h2>
           <form onSubmit={handleSubmit(handleSignInUser)}>

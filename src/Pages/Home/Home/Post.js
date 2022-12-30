@@ -6,8 +6,9 @@ import { AuthContext } from "../../../contexts/AuthProvider";
 import { FaComment } from "react-icons/fa";
 import { FiShare2 } from "react-icons/fi";
 import { RiStarSFill } from "react-icons/ri";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { toast } from "react-hot-toast";
 
 const Post = ({ post }) => {
   const {
@@ -24,6 +25,7 @@ const Post = ({ post }) => {
   const { user } = useContext(AuthContext);
   // const [likes, setLikes] = useState(0);
   const [comments, setComments] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch(`${process.env.REACT_APP_PORT}/comment/${post?._id}`)
@@ -40,7 +42,13 @@ const Post = ({ post }) => {
       postId: post._id,
       newLike,
     };
-    fetch(`${process.env.REACT_APP_PORT}/newlike`, {
+
+    if (!user) {
+      toast.error("Please Login First");
+      return navigate("/login");
+    }
+
+    return fetch(`${process.env.REACT_APP_PORT}/newlike`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -62,7 +70,13 @@ const Post = ({ post }) => {
       postId: post._id,
       newLove,
     };
-    fetch(`${process.env.REACT_APP_PORT}/newlove`, {
+
+    if (!user) {
+      toast.error("Please Login First");
+      return navigate("/login");
+    }
+
+    return fetch(`${process.env.REACT_APP_PORT}/newlove`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -127,7 +141,8 @@ const Post = ({ post }) => {
             <FaComment className="text-gray-500" />
           </button>
           <Link to={`/postDetails/${_id}`}>
-            {comments?.length} <span className="hidden md:inline-block">Comments</span>
+            {comments?.length}{" "}
+            <span className="hidden md:inline-block">Comments</span>
           </Link>
         </div>
         <div className="flex justify-center items-center gap-x-2">

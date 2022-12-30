@@ -46,22 +46,22 @@ const Comments = ({ post, comments }) => {
   };
 
   return (
-    <section class="bg-white dark:bg-gray-900 py-5 lg:py-6">
-      <div class="max-w-2xl mx-auto px-4">
-        <div class="flex justify-between items-center mb-6">
-          <h2 class="text-lg lg:text-2xl font-bold text-gray-900 dark:text-white">
+    <section className="bg-white dark:bg-gray-900 py-5 lg:py-6">
+      <div className="max-w-2xl mx-auto px-4">
+        <div className="flex justify-between items-center mb-6">
+          <h2 className="text-lg lg:text-2xl font-bold text-gray-900 dark:text-white">
             Comments ({comments?.length})
           </h2>
         </div>
-        <form onSubmit={handleSubmit(handleComment)} class="mb-6">
-          <div class="py-2 px-4 mb-4 bg-white rounded-lg rounded-t-lg border border-gray-200 dark:bg-gray-800 dark:border-gray-700">
-            <label for="comment" class="sr-only">
+        <form onSubmit={handleSubmit(handleComment)} className="mb-6">
+          <div className="py-2 px-4 mb-4 bg-white rounded-lg rounded-t-lg border border-gray-200 dark:bg-gray-800 dark:border-gray-700">
+            <label for="comment" className="sr-only">
               Your comment
             </label>
             <textarea
               id="comment"
               rows="4"
-              class="px-0 w-full text-sm text-gray-900 border-0 focus:ring-0 focus:outline-none dark:text-white dark:placeholder-gray-400 dark:bg-gray-800"
+              className="px-0 w-full text-sm text-gray-900 border-0 focus:ring-0 focus:outline-none dark:text-white dark:placeholder-gray-400 dark:bg-gray-800"
               placeholder="Write a comment..."
               required
               {...register("comment")}
@@ -69,7 +69,7 @@ const Comments = ({ post, comments }) => {
           </div>
           <button
             type="submit"
-            class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-gray-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800"
+            className="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-gray-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800"
             disabled={processing}
           >
             Post comment
